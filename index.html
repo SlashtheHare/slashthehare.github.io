@@ -92,6 +92,30 @@
     mask-image:linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
   }
 
+  /* ── Section headings ── */
+  .section-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ash);
+    margin:0 0 18px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .section-label::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:repeating-linear-gradient(90deg, rgba(143,135,128,0.35) 0 4px, transparent 4px 8px);
+  }
+
+  .section + .section{
+    margin-top:44px;
+  }
+
+  /* ── File grid ── */
   .files{
     display:grid;
     grid-template-columns:1fr 1fr;
@@ -118,6 +142,7 @@
     transition:transform 0.25s ease, box-shadow 0.25s ease;
   }
 
+  /* reset nth-child tilts per section by using explicit custom props */
   .file:nth-child(1){ --tilt:-0.6deg; }
   .file:nth-child(2){ --tilt:0.5deg; }
   .file:nth-child(3){ --tilt:0.4deg; }
@@ -134,6 +159,46 @@
     inset:8px;
     border:1px dashed rgba(0,0,0,0.18);
     pointer-events:none;
+  }
+
+  /* Construction tape overlay for WIP files */
+  .file.wip{
+    opacity:0.82;
+    cursor:default;
+    pointer-events:none;
+  }
+  .file.wip::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:repeating-linear-gradient(
+      -45deg,
+      rgba(180,130,0,0.12) 0px,
+      rgba(180,130,0,0.12) 10px,
+      transparent 10px,
+      transparent 20px
+    );
+    z-index:1;
+    border-radius:2px;
+  }
+  .file.wip .wip-badge{
+    display:flex;
+  }
+
+  .wip-badge{
+    display:none;
+    position:absolute;
+    top:12px;
+    right:12px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.52rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(180,130,0,0.9);
+    border:1px solid rgba(180,130,0,0.5);
+    padding:2px 6px;
+    background:rgba(0,0,0,0.35);
+    transform:rotate(6deg);
   }
 
   .file-no{
@@ -222,36 +287,76 @@
 
   <hr class="tear" />
 
-  <div class="files">
+  <!-- ── SECTION 1: Commissions ── -->
+  <div class="section">
+    <div class="section-label">Comms, Trades and Related</div>
+    <div class="files">
 
-    <a class="file" href="payments/">
-      <div class="file-no">FILE NO. 01</div>
-      <div class="stamp">PAID<br/>IN&nbsp;FULL</div>
-      <h2>Art Payments</h2>
-      <p>Offers, turnaround, what I'm looking for, etc.</p>
-    </a>
+      <a class="file" href="https://slashthehare.com" target="_blank" rel="noopener">
+        <div class="file-no">FILE NO. 01</div>
+        <div class="stamp">MAIN<br/>SITE</div>
+        <h2>slashthehare.com</h2>
+        <p>My main website — portfolio, commission info, and everything else.</p>
+      </a>
 
-    <a class="file" href="prefs/">
-      <div class="file-no">FILE NO. 02</div>
-      <div class="stamp">ON<br/>FILE</div>
-      <h2>Art Preferences</h2>
-      <p>What I love drawing, what to avoid, and likes &amp; dislikes for reference.</p>
-    </a>
+      <a class="file" href="payments/">
+        <div class="file-no">FILE NO. 02</div>
+        <div class="stamp">PAID<br/>IN&nbsp;FULL</div>
+        <h2>Art Payments</h2>
+        <p>Offers, turnaround, what I'm looking for, etc.</p>
+      </a>
 
-    <a class="file" href="trades/">
-      <div class="file-no">FILE NO. 03</div>
-      <div class="stamp">TRADE<br/>OPEN</div>
-      <h2>Trades</h2>
-      <p>Current trade status, terms, and what I'm looking to swap for.</p>
-    </a>
+      <a class="file" href="trades/">
+        <div class="file-no">FILE NO. 03</div>
+        <div class="stamp">TRADE<br/>OPEN</div>
+        <h2>Trades</h2>
+        <p>Current trade status, who I'd want drawn, what I like to draw/get drawn, etc!</p>
+      </a>
 
-    <a class="file" href="requests/">
-      <div class="file-no">FILE NO. 04</div>
-      <div class="stamp">SEND<br/>WORD</div>
-      <h2>Requests</h2>
-      <p>Got a question or a commission idea? Drop a message here.</p>
-    </a>
+      <a class="file" href="requests/">
+        <div class="file-no">FILE NO. 04</div>
+        <div class="stamp">SEND<br/>WORD</div>
+        <h2>Requests</h2>
+        <p>Got a question or a commission idea? Drop a message here.</p>
+      </a>
 
+    </div>
+  </div>
+
+  <!-- ── SECTION 2: About Me ── -->
+  <div class="section">
+    <div class="section-label">About Me</div>
+    <div class="files">
+
+      <a class="file" href="https://slashthehare.github.io/interests/" target="_blank" rel="noopener">
+        <div class="file-no">FILE NO. 05</div>
+        <div class="stamp">OPEN<br/>BOOK</div>
+        <h2>Interests</h2>
+        <p>Stuff I'm autistic as fuck about :P</p>
+      </a>
+
+      <a class="file" href="prefs/">
+        <div class="file-no">FILE NO. 06</div>
+        <div class="stamp">ON<br/>FILE</div>
+        <h2>Art Preferences</h2>
+        <p>What I love drawing, what to avoid, and likes &amp; dislikes for reference.</p>
+      </a>
+
+      <a class="file" href="https://slashthehare.github.io/medialog/" target="_blank" rel="noopener">
+        <div class="file-no">FILE NO. 07</div>
+        <div class="stamp">LOG<br/>KEPT</div>
+        <h2>Medialog</h2>
+        <p>A running record of games, films, books, and shows I've been through.</p>
+      </a>
+
+      <a class="file wip" href="#" aria-disabled="true" tabindex="-1">
+        <div class="file-no">FILE NO. 08</div>
+        <div class="wip-badge">In Construction</div>
+        <h2>Lore Hub</h2>
+        <p>Lore and ocs! WIP.</p>
+      </a>
+
+    </div>
   </div>
 
   <footer>
