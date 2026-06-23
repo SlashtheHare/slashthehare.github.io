@@ -143,6 +143,29 @@ body::after {
   animation: grow-drip 4s 2s ease forwards;
   opacity: 0;
 }
+
+.hub-badge {
+  position: absolute;
+  top: 0.1rem;
+  left: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--chalk-dim);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.6rem;
+  text-decoration: none;
+  background: var(--stone);
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.hub-badge:hover {
+  color: var(--yellow);
+  border-color: var(--yellow-dim);
+}
+@media (max-width: 560px) {
+  .hub-badge { position: static; display: inline-block; margin-bottom: 0.8rem; }
+}
 .drip-deco::after {
   content: '';
   position: absolute;

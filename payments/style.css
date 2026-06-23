@@ -521,6 +521,55 @@ paint-order: stroke fill;
 
 .carousel-dot.active { opacity: 1; background: var(--blood-red); }
 
+/* ===== HUB BADGE (small wax seal, top-left of header image) ===== */
+.hub-badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 5;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+    border: 2px solid var(--gold);
+    background: rgba(43, 24, 16, 0.55);
+    backdrop-filter: blur(2px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    text-decoration: none;
+    transition: border-color 0.25s ease, transform 0.25s ease, background 0.25s ease;
+}
+
+.hub-badge:hover {
+    border-color: var(--blood-red);
+    transform: scale(1.06);
+    background: rgba(196, 30, 58, 0.35);
+}
+
+.hub-badge .hub-badge-icon {
+    font-family: var(--font-gothic);
+    font-size: 1.1rem;
+    color: var(--gold);
+    line-height: 1;
+}
+
+.hub-badge .hub-badge-label {
+    font-family: var(--font-title);
+    font-size: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--parchment);
+}
+
+@media (max-width: 768px) {
+    .hub-badge { width: 50px; height: 50px; top: 8px; left: 8px; }
+    .hub-badge .hub-badge-icon { font-size: 0.9rem; }
+    .hub-badge .hub-badge-label { font-size: 0.42rem; }
+}
+
 /* ===== WARNING BLOCK WITH GIFS ===== */
 .seals-block {
     display: flex;

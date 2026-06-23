@@ -128,6 +128,20 @@ body {
   position: relative; z-index: 1;
 }
 .header-tab:hover { background: var(--paper2); color: var(--ink); }
+.hub-tab {
+  background: var(--paper-dark);
+  border: 2px solid var(--ink2);
+  border-radius: 6px 6px 0 0;
+  padding: 0.4rem 1.1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.75rem; font-weight: 400;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--faded);
+  text-decoration: none;
+  margin-left: auto;
+  align-self: flex-end;
+}
+.hub-tab:hover { background: var(--paper2); color: var(--ink); }
 .header-tab.active {
   background: var(--paper);
   color: var(--ink); font-weight: 600;
