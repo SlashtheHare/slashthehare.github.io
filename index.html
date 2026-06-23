@@ -1,1 +1,265 @@
-hi
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SlashtheHare — Artist Files</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Special+Elite&family=IBM+Plex+Mono:wght@400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --ink-black:#0c0a0a;
+    --ink-black-2:#141010;
+    --paper:#e4d9c2;
+    --paper-shadow:#c9bb9c;
+    --blood:#7a1414;
+    --stamp-red:#b3261e;
+    --ash:#8f8780;
+    --chalk:#ece6da;
+  }
+
+  *{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(122,20,20,0.08), transparent 40%),
+      radial-gradient(circle at 85% 90%, rgba(122,20,20,0.06), transparent 45%),
+      var(--ink-black);
+    color:var(--chalk);
+    font-family:'Crimson Pro', serif;
+    min-height:100vh;
+  }
+
+  /* subtle film-grain via layered noise svg */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events:none;
+    z-index:1;
+    mix-blend-mode:overlay;
+  }
+
+  .wrap{
+    position:relative;
+    z-index:2;
+    max-width:920px;
+    margin:0 auto;
+    padding:64px 24px 80px;
+  }
+
+  header{
+    text-align:center;
+    margin-bottom:8px;
+  }
+
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--ash);
+  }
+
+  h1{
+    font-family:'Special Elite', monospace;
+    font-size:clamp(2.1rem, 6vw, 3.4rem);
+    letter-spacing:0.04em;
+    margin:14px 0 6px;
+    color:var(--chalk);
+    text-shadow:0 0 18px rgba(179,38,30,0.25);
+  }
+
+  .subhead{
+    color:var(--ash);
+    font-style:italic;
+    font-size:1.02rem;
+    max-width:480px;
+    margin:0 auto 36px;
+  }
+
+  hr.tear{
+    border:none;
+    height:10px;
+    margin:0 auto 40px;
+    max-width:560px;
+    background:repeating-linear-gradient(90deg, var(--blood) 0 6px, transparent 6px 12px);
+    opacity:0.55;
+    mask-image:linear-gradient(90deg, transparent, black 15%, black 85%, transparent);
+  }
+
+  .files{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+  }
+
+  @media (max-width:640px){
+    .files{ grid-template-columns:1fr; }
+  }
+
+  .file{
+    position:relative;
+    display:block;
+    text-decoration:none;
+    color:var(--ink-black);
+    background:
+      linear-gradient(160deg, var(--paper) 0%, var(--paper-shadow) 100%);
+    border-radius:2px;
+    padding:26px 24px 24px;
+    box-shadow:
+      0 1px 0 rgba(255,255,255,0.15) inset,
+      0 14px 26px rgba(0,0,0,0.45);
+    transform:rotate(var(--tilt, 0deg));
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .file:nth-child(1){ --tilt:-0.6deg; }
+  .file:nth-child(2){ --tilt:0.5deg; }
+  .file:nth-child(3){ --tilt:0.4deg; }
+  .file:nth-child(4){ --tilt:-0.5deg; }
+
+  .file:hover{
+    transform:rotate(0deg) translateY(-4px);
+    box-shadow:0 20px 34px rgba(0,0,0,0.55);
+  }
+
+  .file::after{
+    content:"";
+    position:absolute;
+    inset:8px;
+    border:1px dashed rgba(0,0,0,0.18);
+    pointer-events:none;
+  }
+
+  .file-no{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.12em;
+    color:rgba(0,0,0,0.45);
+  }
+
+  .file h2{
+    font-family:'Special Elite', monospace;
+    font-size:1.3rem;
+    margin:8px 0 6px;
+    letter-spacing:0.02em;
+  }
+
+  .file p{
+    font-size:0.94rem;
+    line-height:1.45;
+    color:rgba(0,0,0,0.68);
+    margin:0;
+  }
+
+  .stamp{
+    position:absolute;
+    top:14px;
+    right:14px;
+    width:64px;
+    height:64px;
+    border-radius:50%;
+    border:2.5px solid var(--stamp-red);
+    color:var(--stamp-red);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.55rem;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    line-height:1.1;
+    transform:rotate(14deg);
+    opacity:0.85;
+    filter:url(#grunge);
+    mix-blend-mode:multiply;
+  }
+
+  footer{
+    text-align:center;
+    margin-top:56px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    color:var(--ash);
+    letter-spacing:0.05em;
+  }
+
+  footer a{
+    color:var(--ash);
+    text-decoration:underline;
+    text-decoration-color:rgba(143,135,128,0.4);
+  }
+
+  footer a:hover{ color:var(--chalk); }
+
+  @media (prefers-reduced-motion: reduce){
+    .file{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- SVG filter used for the grunge stamp edge -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="grunge">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04 0.09" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="6"/>
+  </filter>
+</svg>
+
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">SlashtheHare · Case File Index</div>
+    <h1>Artist Files</h1>
+    <p class="subhead">Four files on record. Pick one to open it.</p>
+  </header>
+
+  <hr class="tear" />
+
+  <div class="files">
+
+    <a class="file" href="payments/">
+      <div class="file-no">FILE NO. 01</div>
+      <div class="stamp">PAID<br/>IN&nbsp;FULL</div>
+      <h2>Payments</h2>
+      <p>Rates, accepted methods, and how invoices get settled.</p>
+    </a>
+
+    <a class="file" href="prefs/">
+      <div class="file-no">FILE NO. 02</div>
+      <div class="stamp">ON<br/>FILE</div>
+      <h2>Preferences</h2>
+      <p>What I love drawing, what to avoid, and likes &amp; dislikes for reference.</p>
+    </a>
+
+    <a class="file" href="trades/">
+      <div class="file-no">FILE NO. 03</div>
+      <div class="stamp">TRADE<br/>OPEN</div>
+      <h2>Trades</h2>
+      <p>Current trade status, terms, and what I'm looking to swap for.</p>
+    </a>
+
+    <a class="file" href="requests/">
+      <div class="file-no">FILE NO. 04</div>
+      <div class="stamp">SEND<br/>WORD</div>
+      <h2>Requests</h2>
+      <p>Got a question or a commission idea? Drop a message here.</p>
+    </a>
+
+  </div>
+
+  <footer>
+    slashthehare.github.io &nbsp;·&nbsp; <a href="https://slashthehare.com" target="_blank" rel="noopener">slashthehare.com</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
