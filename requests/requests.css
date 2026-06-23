@@ -144,27 +144,27 @@ body::after {
   opacity: 0;
 }
 
-.hub-badge {
-  position: absolute;
-  top: 0.1rem;
-  left: 0;
+.hub-tab {
   font-family: 'Oswald', sans-serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--chalk-dim);
-  border: 1px solid var(--border);
-  padding: 0.3rem 0.6rem;
-  text-decoration: none;
+  padding: 0.4rem 1.2rem;
+  border: 1px solid var(--grout);
+  border-bottom: none;
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  z-index: 1;
   background: var(--stone);
-  transition: color 0.2s ease, border-color 0.2s ease;
+  color: var(--chalk-dim);
+  text-decoration: none;
+  margin-left: auto;
+  align-self: flex-end;
+  transition: color 0.15s ease, background 0.15s ease;
 }
-.hub-badge:hover {
-  color: var(--yellow);
-  border-color: var(--yellow-dim);
-}
-@media (max-width: 560px) {
-  .hub-badge { position: static; display: inline-block; margin-bottom: 0.8rem; }
+.hub-tab:hover {
+  background: var(--stone2);
+  color: var(--paper);
 }
 .drip-deco::after {
   content: '';

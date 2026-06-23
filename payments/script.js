@@ -1,6 +1,6 @@
 // Alice: Madness Returns Menu - Half Circle Navigation
 document.addEventListener('DOMContentLoaded', () => {
-    const menuItems = document.querySelectorAll('.menu-item');
+    const menuItems = document.querySelectorAll('.menu-item:not(.menu-item-link)');
     const contentSections = document.querySelectorAll('.content-section');
     const titleWraps = document.querySelectorAll('.section-title-wrap');
 
